@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+    Padding="20" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:TestingGeoCoding" 
+    x:Class="TestingGeoCoding.MainPage">
+    <StackLayout>
+        <Editor x:Name="addressField" 
+                Placeholder="Enter address here" 
+                BackgroundColor="Silver" />
+        <!-- Place new controls here -->
+        <Label x:Name="lat" Text="Latitude is:" 
+               />
+           <Label x:Name="longi" Text="Longitude is:" 
+               />
+        <Button Text="Get Latitude and Longitude" 
+                BackgroundColor="orange"
+                Clicked="Handle_Clicked"
+                />
+    </StackLayout>
+</ContentPage>
