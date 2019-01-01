@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using TestingGeoCoding.Services;
 
 namespace TestingGeoCoding
 {
@@ -19,6 +20,7 @@ namespace TestingGeoCoding
         {
             lat.Text = "Loading....";
             longi.Text = "Loading...";
+            addressField.Text = "20a Admiralty Way, Eti-Osa, Lagos, Nigeria";
             if (addressField.Text==null)
             {
                 return;
@@ -27,16 +29,18 @@ namespace TestingGeoCoding
             try
             {
 
-                var address = addressField.Text.Trim();
-                var locations = await Geocoding.GetLocationsAsync(address);
+                LatLong ll = new LatLong();
+                var calculatedLongLat = ll.GetLatLongFromAddress(addressField.Text);
+                //var address = addressField.Text.Trim();
+                //var locations = await Geocoding.GetLocationsAsync(address);
 
-                var location = locations?.FirstOrDefault();
-                if (location != null)
-                {
-                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                    lat.Text ="latitude is: "+ location.Latitude.ToString();
-                    longi.Text ="longitude is: "+ location.Longitude.ToString();
-                }
+                //var location = locations?.FirstOrDefault();
+                //if (location != null)
+                //{
+                //    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+                //    lat.Text ="latitude is: "+ location.Latitude.ToString();
+                //    longi.Text ="longitude is: "+ location.Longitude.ToString();
+                //}
             }
             catch (FeatureNotSupportedException fnsEx)
             {
